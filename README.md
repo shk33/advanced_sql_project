@@ -232,4 +232,4 @@ password: 123456
 
 # Nota
 Correr todos los comandos genera automáticamente la base de datos.
-En caso de no lograr ejecutar los comandos el backup se encuentra en el archivo: <tt>cadena_favores_development.sql</tt>
+En caso de no lograr ejecutar los comandos el backup se encuentra en el archivo: <tt>cadena_favores_development.sql</tt> el nombre de la base de datos debe ser: <tt>cadena_favores_development</tt>
