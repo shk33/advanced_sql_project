@@ -9,7 +9,7 @@ m.coronel.seg@gmail.com
 ``` sql
 CREATE TABLE IF NOT EXISTS offers (
   id int(11) NOT NULL AUTO_INCREMENT,
-  user_id int(11),
+  user_id int(11) DEFAULT NULL,
   service_request_id int(11) DEFAULT NULL,
   accepted tinyint(1) DEFAULT '0',
   created_at datetime DEFAULT NULL,
