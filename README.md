@@ -170,7 +170,7 @@ sudo apt-get install nodejs
 gem install rails -v 4.2.4
 ```
 
-* Haciendo Rails ejutable
+* Haciendo Rails ejecutable
 ```
 rbenv rehash
 ```
@@ -183,13 +183,16 @@ rails -v
 
 # Instalación de la Aplicación WEB
 
-* Poner el código en una carpeta
 
 * Moverse a la carpeta del proyecto
-<tt>cd cadena-favores</tt>.
+```
+cd cadena-favores
+```
 
-* Ejecutar el comando 
-<tt>bundle install</tt>.
+* Instando dependencias del proyecto 
+```
+bundle install
+```
 
 * Abrir el archivo <tt>config/application.example.yml</tt>.
 ```
@@ -201,16 +204,31 @@ DATABASE_HOST: "127.0.0.1"
 
 * Modifcar los valores DATABASE_USERNAME y DATABASE_PASSWORD con la configuración de su computadora de MySql.
 
-* Duplicar el archivo <tt>config/application.example.yml</tt> y al archivo duplicado renombrarlo como <tt>config/application.yml</tt>
+* Crear una copia del archivo <tt>config/application.example.yml</tt> y colocarlo en <tt>config/application.yml</tt>
 
+* Crear base de datos, esquemas y seeders
+```
+rake db:setup
+```
 
-* Ejecutar el comando
-<tt>rake db:setup</tt>
-
-* Ejecutar el comando
-<tt>rails server</tt>.
+* Levantar el servidor
+```
+rails server
+```
 
 * Visitar la página en locahost:3000
+
+* Usuarios para ingresar al sistema
+```
+Usuario 1
+email:    admin@admin.com
+password: 123456
+
+Usuario 2
+email:    valid@valid
+password: 123456
+```
+
 
 # Nota
 Correr todos los comandos genera automáticamente la base de datos.
