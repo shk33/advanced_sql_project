@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: Soy el super usuario main user
+  user: main_user
+
+two:
+  description: MyText
+  user: one
+
+three:
+  description: SomeText
+  user: invalid

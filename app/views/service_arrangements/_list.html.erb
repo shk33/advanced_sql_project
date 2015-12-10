@@ -1,0 +1,59 @@
+<%= paginate @arrangements %>
+<% @arrangements.each do |arrangement| %>
+  <div class="panel">
+    <div class="panel-body">
+      <div class="row">
+
+        <div class="col-sm-12">
+          <h4 class="title-store">
+            <strong>
+              <%= link_to arrangement.service.title , arrangement %>
+            </strong>
+          </h4>
+          <hr>
+          <p><%= arrangement.service.description %></p>
+          <p>
+            <strong>Usuario Contratado:</strong>
+            <%= link_to arrangement.server.name, arrangement.server %>
+          </p>
+          <p>
+            <strong>Fecha de Inicio:</strong>
+            <%= arrangement.start_date %>
+          </p>
+          <p>
+            <strong>Fecha de Entrega:</strong>
+            <%= arrangement.end_date %>
+          </p>
+          <hr>
+          <p>
+            <div class="btn btn-primary">
+              <strong>Costo: </strong><%= arrangement.service.cost %> puntos
+            </div>
+            <% if current_user == arrangement.client && !arrangement.canceled%>
+              <div class="btn btn-info pull-right">
+                <%= form_for arrangement do |f| %>
+                  <%= f.submit "Aceptar como Concluido", class: "btn btn-info" %>
+                <% end %>
+              </div>
+            <% end %>
+          </p>
+          <% if current_user == arrangement.client && !arrangement.canceled %>
+            <hr>
+            <p>
+              <%= link_to 'Cancelar', cancel_service_arrangement_path(arrangement), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger" %>
+            </p>
+          <% end %>
+          <% if arrangement.canceled %>
+            <hr>
+            <p>
+              <button class="btn btn-warning">
+                Cancelado
+              </button>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= paginate @arrangements %>

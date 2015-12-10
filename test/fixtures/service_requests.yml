@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: main_user
+  open: true
+  tags: programacion, diseno
+
+two:
+  user: one
+  open: true
+  tags: programacion, diseno
+
+three:
+  user: one
+  open: true
+  tags: programacion, diseno
+
+main_closed:
+  user: main_user
+  open: false
+  tags: programacion, diseno
+
+closed:
+  user: one
+  open: false
+  tags: educativa, transporte
+
+over:
+  user: main_user
+  open: false
+  tags: educativa, transporte

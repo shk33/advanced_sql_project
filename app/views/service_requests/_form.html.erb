@@ -1,0 +1,26 @@
+<%=form_for @service_request do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.fields_for :service do |serviceable_form| %>
+    <div class="form-group">
+      <%=serviceable_form.hidden_field :id, class: "form-control" %>
+      <%=serviceable_form.label(:title, "Título") %>
+      <%=serviceable_form.text_field :title, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%=serviceable_form.label(:description, "Descripción") %>
+      <%=serviceable_form.text_area :description, class: "form-control"%>
+    </div>
+    <div class="form-group">
+      <%=serviceable_form.label(:cost, "Costo en Puntos. Tienes: #{@usable_points} puntos disponibles") %>
+      <%=serviceable_form.number_field :cost, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <label>Etiquetas:</label> <br>
+      <%= serviceable_form.collection_check_boxes :tag_ids, @tags, :id, :name %>
+    </div>
+  <% end %>
+
+  <%= f.submit "Crear", class: 'btn btn-info' %>
+<% end %>

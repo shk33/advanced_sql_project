@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: <%= Date.today + 2 %>
+  end_date: <%= Date.today + 3 %>
+  client: main_user
+  server: one
+  completed: false
+  offer: two
+
+two:
+  start_date: 2015-02-04
+  end_date: 2015-02-04
+  client: main_user
+  server: one
+  completed: true
+
+three:
+  start_date: 2015-02-04
+  end_date: 2015-02-04
+  client: one
+  server: main_user
+  completed: true
+
+four:
+  start_date: 2015-02-04
+  end_date: 2015-02-04
+  client: main_user
+  server: one
+  completed: true
+
+five:
+  start_date: 2015-02-04
+  end_date: 2015-02-04
+  client: one
+  server: main_user
+  completed: false
+
+six:
+  start_date: 2015-02-04
+  end_date: 2015-02-04
+  client: one
+  server: main_user
+  completed: true
+  offer: six

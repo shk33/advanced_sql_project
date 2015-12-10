@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h2 class="page-header">
+      Detalles del servicio a realizar   
+    </h2>
+  </div>
+</div>
+
+<div class="row" id="real-estates-detail">
+
+  <div class="col-lg-4 col-md-4 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="text-center" id="author">
+          <label>Cliente</label>
+          <p>
+            <%= link_to @service_arrangement.client.name , @service_arrangement.client %>
+          </p>
+        </div>
+        <div class="text-center" id="author">
+          <label>Servidor</label>
+          <p>
+            <%= link_to @service_arrangement.server.name , @service_arrangement.server %>
+          </p>
+        </div>
+        <div class="text-center" id="author">
+          <label>Fecha de inicio</label>
+          <p><%= @service_arrangement.start_date %></p>
+        </div>
+        <div class="text-center" id="author">
+          <label>Fecha de fin</label>
+          <p><%= @service_arrangement.end_date %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8 col-md-8 col-xs-12">
+    <div class="row" id="property-list" >
+      <div class="panel">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4 class="title-real-estates">
+                <strong>
+                  <%= link_to @service.title, @service_request %>
+                </strong>
+                <span class="pull-right"><%= @service.cost %> puntos</span>
+              </h4>
+              <hr>
+              <p>
+                <%= @service.description %>
+              </p>
+              <hr>
+              <p>
+                <% @service_request.tags.each do |tag| %>
+                  <span class="label label-danger"><%= tag.name %></span>
+                <% end %>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8"></div>
+            <div class="col-lg-4">
+            <% if current_user?(@service_arrangement.client) && !@service_arrangement.completed? && !@service_arrangement.canceled %>
+              <%= form_for @service_arrangement do |f| %>
+                <%= f.submit "Aceptar como Concluido", class: "btn btn-info" %>
+              <% end %>
+              <%= link_to 'Cancelar', cancel_service_arrangement_path(@service_arrangement), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger" %>
+            <% end %>
+            <% if @service_arrangement.canceled %>
+              <p>
+                <button class="btn btn-warning">
+                  Cancelado
+                </button>
+              </p>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% if @service_arrangement.review %>
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10">
+      <div class="col-sm-offset-1 col-sm-10">
+        <section class="panel">
+          <header class="panel-heading">
+            <h3>Reseña
+              <% rating = @service_arrangement.review.rating %>
+              <% rating.times do %>
+                <i class="fa fa-star filled-star" ></i>
+              <% end %>
+              <% (5-rating).times do %>
+                <i class="fa fa-star-o filled-star" ></i>
+              <% end %>
+            </h3>
+          </header>
+          <div class="panel-body">
+            <p>
+            <strong>Descripción:</strong>
+              <%= @service_arrangement.review.description %>
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+<% end %>

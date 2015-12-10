@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: main_user
+  service_request: two
+
+two:
+  user: one
+  service_request: one
+
+three:
+  user: main_user
+  service_request: two
+
+four:
+  user: main_user
+  service_request: main_closed
+
+five:
+  user: one
+  service_request: one
+  accepted: true
+
+six:
+  user: one
+  service_request: over
+  accepted: true

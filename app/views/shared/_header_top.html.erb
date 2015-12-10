@@ -1,0 +1,56 @@
+<div class="header-top">
+  <!-- start:navbar -->
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="container">
+      <!-- start:navbar-header -->
+      <div class="navbar-header">
+        <%= link_to root_url, class: "navbar-brand" do %>
+          <i class="fa fa-users"></i>
+          <strong>Cadena de </strong>Favores<strong>.</strong>
+        <% end %>
+      </div>
+      <!-- end:navbar-header -->
+      <ul class="nav navbar-nav navbar-left top-menu">
+        <!-- start dropdown 1 -->
+        <!-- end dropdown 1 -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right top-menu">
+        <li>
+        <%= form_tag service_requests_path, :method => 'get' do %>
+            <%= text_field_tag :search, params[:search], class: "form-control input-sm search" %>
+            <%= hidden_field_tag :search_type, "1" %>
+          <% end %>
+        </li>
+        <!-- user login dropdown start-->
+        <li class="dropdown">
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="username">
+              <%= current_user.name %>
+            </span>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <div class="log-arrow-up"></div>
+            <li>
+              <%= link_to my_profile_path do %>
+                <i class="fa fa-suitcase" data-original-title="" title=""></i> Perfil
+              <% end %>
+            </li>
+            <li>
+              <%= link_to settings_path do %>
+                <i class="fa fa-cog" data-original-title="" title=""></i> Configuración
+              <% end %>
+            </li>
+            <li>
+              <%= link_to logout_path, method: "delete" do %>
+                <i class="fa fa-key" data-original-title="" title="">
+                </i> Cerrar Sesión
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- end:navbar -->
+</div>
